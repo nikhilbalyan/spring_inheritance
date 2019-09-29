@@ -1,7 +1,11 @@
 package inheritance_mapping.model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@Entity
+@DiscriminatorValue("Books")
 public class Book extends Product{
 	@Column(name="genre")
 	private String genre;
