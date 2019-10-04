@@ -85,24 +85,35 @@ public class Inheritance_Controller {
 //		return new ResponseEntity<User>(userCreated, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value="/addAllSample", method = RequestMethod.GET)
-	public ResponseEntity<Object> getAllSample(@RequestParam("id") int prodId) {
+	@RequestMapping(value="/getAllSample", method = RequestMethod.GET)
+	public ResponseEntity<Product> getAllSample(@RequestParam("id") int prodId) {
 			Product prod = prodRepository.getOne((long) prodId);
 			
 			if((prod instanceof Product && !(prod instanceof Book) && !(prod instanceof Apparal))) {
 				Product pr = (Product)prod;
 //				prodRepository.save(pr);
-				return new ResponseEntity<Object>(pr, HttpStatus.CREATED);
+				return new ResponseEntity<Product>(pr, HttpStatus.CREATED);
 			} else if (prod instanceof Product && (prod instanceof Book) && !(prod instanceof Apparal)) {
 				Book book = (Book) prod;
-				return new ResponseEntity<Object>(book, HttpStatus.CREATED);
+				return new ResponseEntity<Product>(book, HttpStatus.CREATED);
 //				bookRepository.save(book);
 			} else if (prod instanceof Product && !(prod instanceof Book) && prod instanceof Apparal) {
 				Apparal apparal = (Apparal) prod;
-				return new ResponseEntity<Object>(apparal, HttpStatus.CREATED);
+				return new ResponseEntity<Product>(apparal, HttpStatus.CREATED);
 //				apparalRepository.save(apparal);
 			}
 			return null;
 //			return null;
 	}
+	
+	
+	@RequestMapping(value="/addBooks", method = RequestMethod.POST)
+	public ResponseEntity<Book> addAllBook(@RequestBody Book books) {
+		Book book = bookRepository.save(books);
+		return new ResponseEntity<Book>(book, HttpStatus.CREATED);
+	}
+	
+	/*@RequestMapping(value="/addBook", method = RequestMethod.POST)
+	public Response*/
+	
 }
