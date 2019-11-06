@@ -1,0 +1,30 @@
+{
+	"prodName": "parleg",
+	"price": 332.4,
+	"genre": "Fictional",
+	"author": "Nikhil Balyan",
+	"publications": "Tommy Hilfilger",
+	"type": "Jeans",
+	"brand": "Best",
+	"design": "Bell bottom"
+}
+
+
+select * from product;
+update product set brand = 'red tape', design = 'bell bottom', type = 'best jeans' where product_id=1;
+
+post all sample :- post http://localhost:8080/addAllSample
+
+{
+	"prodName": "parleg",
+	"price": 332.4,
+	"genre": "Fictional",
+	"author": "Nikhil Balyan",
+	"publications": "Tommy Hilfilger"
+}
+
+
+
+get all sample:- get http://localhost:8080/addAllSample?id=1
+it will fetch all sample only for product id = 1
+

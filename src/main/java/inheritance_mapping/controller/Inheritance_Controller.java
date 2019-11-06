@@ -105,4 +105,17 @@ public class Inheritance_Controller {
 			return null;
 //			return null;
 	}
+	
+	@RequestMapping(value="/addBooks", method = RequestMethod.POST)
+	public ResponseEntity<Book> addAllBook(@RequestBody Book book) {
+		Book savedBook = bookRepository.save(book);
+		return new ResponseEntity<Book>(savedBook, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value="/getAllBooks", method = RequestMethod.GET)
+	public ResponseEntity<Book> getAllBook(@RequestParam("id") Long id) {
+		Book fetchBook = bookRepository.getOne(id);
+		return new ResponseEntity<Book>(fetchBook, HttpStatus.OK);
+	}
+	
 }
